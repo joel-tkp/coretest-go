@@ -2,7 +2,7 @@ server:
   host: "localhost"
   port: 8000
 database:
-  master: "user=application password=anydb dbname=testmaster sslmode=disable"
-  follower: "user=application password=anydb dbname=testfollower sslmode=disable"
+  master: "user=application password=anypasswd dbname=testmaster sslmode=disable"
+  follower: "user=application password=anypasswd dbname=testfollower sslmode=disable"
 redis:
   address: "127.0.0.1:6379"

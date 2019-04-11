@@ -16,6 +16,7 @@ import (
 	userservice "References/coretest/service/user" // service provider
 	"github.com/jmoiron/sqlx" // backend-db wrapper extension
 	"gopkg.in/yaml.v2" // config-read
+	redis "References/coretest/service/redis"
 )
 
 var schema = `
@@ -90,6 +91,9 @@ func Main() error {
 	// Migration First
 	masterDB.MustExec(schema)
 	followerDB.MustExec(schema)
+
+	// Init Redis Cache Service
+	redis.InitService(Config.Redis.Address)
 
 	// user
 	userres := userresource.New(masterDB, followerDB)

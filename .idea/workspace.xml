@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf654aa2-be59-477d-8047-19aa42c7e741" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/http/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/http/payment/payment.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/http/payment/payment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/http/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/http/user/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/interface.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/coretest.config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/coretest.config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/payment/payment.go" beforeDir="false" afterPath="$PROJECT_DIR$/resource/payment/payment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/resource/user/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/payment/payment.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/payment/payment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/payment/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/payment/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/redis/pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/redis/pool.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,20 +23,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/http/payment/payment.go">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/coretest.config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="30">
+              <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/coretest.config.yml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/http/payment/payment.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -172,6 +164,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -233,15 +226,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/http/payment/payment.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        <state relative-caret-position="255">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/coretest.config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        <state relative-caret-position="30">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>

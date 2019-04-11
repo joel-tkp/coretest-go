@@ -1,8 +1,6 @@
 package redis
 
 import (
-    "io/ioutil"
-    "gopkg.in/yaml.v2" 
     "github.com/gomodule/redigo/redis"
     "os"
     "os/signal"
@@ -10,28 +8,12 @@ import (
     "time"
 )
 
-var Config struct {
-    Redis    RedisConfig    `yaml:"redis"`
-}
-
-type RedisConfig struct {
-    Address string `yaml:"address"`
-}
-
 var (
     Pool *redis.Pool
 )
 
-func init() {
-    // read config from config directory
-    out, err := ioutil.ReadFile("config/coretest.config.yml")
-    if err != nil {
-        panic(err)
-    }
-    if err := yaml.Unmarshal(out, &Config); err != nil {
-        panic(err)
-    }
-    redisHost := Config.Redis.Address
+func InitService(host string) {
+    redisHost := host
     if redisHost == "" {
         redisHost = "127.0.0.1:6379" // default
     }
