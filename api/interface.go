@@ -10,32 +10,32 @@ import (
 )
 
 type UserService interface {
-	IsUserActive(/*context.Context, */int64) (bool, error)
-	CreateUser(/*context.Context, */string, string, bool, string) (user.User)
-	GetUser(/*context.Context, */int64) (user.User, error)
-	GetAllUser(/*context.Context, */string, string) ([]user.User, error)
-	GetPaginatedUser(/*context.Context, */int32, int32, string, string) ([]user.User, error)
-	UpdateUser(/*context.Context, */int64, string, string, bool, string) (user.User)
-	DeleteUser(/*context.Context, */int64)
+	IsUserActive(int64) (bool, error)
+	Create(string, string, bool, string) (user.User)
+	Get(int64) (user.User, error)
+	AllList(string, string) ([]user.User, error)
+	PaginatedList(int32, int32, string, string) ([]user.User, error)
+	Update(int64, string, string, bool, string) (user.User)
+	Delete(int64)
 }
 
 type PaymentService interface {
-	ConfirmPayment(/*context.Context, */int64) error
-	CreatePayment(/*context.Context, */int64, bool, string, float64, string) (payment.Payment)
-	GetPayment(/*context.Context, */int64) (payment.Payment, error)
-	GetAllPayment(/*context.Context, */string, string) ([]payment.Payment, error)
-	GetPaginatedPayment(/*context.Context, */int32, int32, string, string) ([]payment.Payment, error)
-	UpdatePayment(/*context.Context, */int64, int64, bool, string, float64, string) (payment.Payment)
-	DeletePayment(/*context.Context, */int64)
+	ConfirmPayment(int64) error
+	Create(int64, bool, string, float64, string) (payment.Payment)
+	Get(int64) (payment.Payment, error)
+	AllList(string, string) ([]payment.Payment, error)
+	PaginatedList(int32, int32, string, string) ([]payment.Payment, error)
+	Update(int64, int64, bool, string, float64, string) (payment.Payment)
+	Delete(int64)
 }
 
 type OrderService interface {
-	CreateOrder(/*context.Context, */order.Order) error
-	ConfirmOrder(/*context.Context, */string) error
+	CreateOrder(order.Order) error
+	ConfirmOrder(string) error
 }
 
 type LogisticService interface {
-	CreateShipment(/*context.Context, */logistic.Shipment) error
-	ShipmentSent(/*context.Context, */string) error
-	ShipmentReceived(/*context.Context, */string) error 
+	CreateShipment(logistic.Shipment) error
+	ShipmentSent(string) error
+	ShipmentReceived(string) error 
 }

@@ -3,15 +3,15 @@ package payment
 // import "context"
 
 type Resource interface {
-	CreatePayment(int64, bool, string, float64, string) (Payment)
-	GetPayment(int64) (Payment, error)
-	GetListPayment(bool, int32, int32, string, string, string) ([]Payment, error)
-	UpdatePayment(int64, int64, bool, string, float64, string) (Payment)
-	DeletePayment(int64)
+	Create(Payment) (Payment)
+	Get(int64) (Payment, error)
+	GetList(bool, int32, int32, string, string, string) ([]Payment, error)
+	Update(Payment) (Payment)
+	Delete(int64)
 }
 
 type UserService interface {
-	IsUserActive(/*context.Context, */int64) (bool, error)
+	IsUserActive(int64) (bool, error)
 }
 
 type Service struct {

@@ -53,6 +53,13 @@ func handler() *httprouter.Router {
     router.POST("/api/v1/user/create", user.Create)
     router.GET("/api/v1/user/:id", user.Detail)
     router.POST("/api/v1/user/delete/:id", user.Delete)
+    // payment context
+    router.GET("/api/v1/payment", payment.List)
+    router.POST("/api/v1/payment/update/:id", payment.Update)
+    router.POST("/api/v1/payment/confirm/:id", payment.ConfirmPayment)
+    router.POST("/api/v1/payment/create", payment.Create)
+    router.GET("/api/v1/payment/:id", payment.Detail)
+    router.POST("/api/v1/payment/delete/:id", payment.Delete)
 	// return handler
 	return router
 }

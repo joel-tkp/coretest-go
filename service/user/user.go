@@ -3,10 +3,12 @@ package user
 import (
 	// "context"
 	"encoding/json" // JSON encode
-	"References/coretest/service/redis"
-	"References/coretest/pkg/log"
+	"References/coretest/service/helper" // Helper Function
+	"References/coretest/service/redis" // Redis Service Provider
+	// "References/coretest/pkg/log" // Logger Package
 )
 
+// Model Definition
 type User struct {
 	ID int64 `db:"id"`
 	Name string `db:"name"`
@@ -15,101 +17,100 @@ type User struct {
 	IdempotencyKey string `db:"idempotency_key"`
 }
 
+// Constants
+const SERVICEID = "user"
+
+// Service Implementation ------------------------------------------------------------------------------------------------
 // Check wether an user is active or not
-func (s *Service) IsUserActive(/*ctx context.Context, */userid int64) (bool, error) {
-	u, err := s.GetUser(userid)
+func (s *Service) IsUserActive(userid int64) (bool, error) {
+	u, err := s.Get(userid)
 	return u.IsActive, err
 }
 
-// Create New User
-func (s *Service) CreateUser(/*ctx context.Context, */name string, email string, isActive bool, idempotencyKey string) (User) {
-	u := s.resource.CreateUser(name, email, isActive, idempotencyKey)
-	// begin invalidate cache
-	relatedKeys,_ := redis.GetKeys("user-list-*")
-	for _, key := range relatedKeys {
-		redis.Delete(key)
+// Create New Data
+func (s *Service) Create(name string, email string, isActive bool, idempotencyKey string) (User) {
+	u := User{
+		Name: name, 
+		Email: email, 
+		IsActive: isActive, 
+		IdempotencyKey: idempotencyKey,
 	}
-	log.SetOutputToFile("log/user.log")
-	log.SetLevel(log.InfoLevel)
-	log.Infow("Cache Invalidation", "key", "user-list-*")
- 	// end of cache invalidation
+	u = s.resource.Create(u)
+	// invalidate cache
+	helper.RevalidateCachePattern(SERVICEID + "-list-*", SERVICEID)
+ 	// return
     return u
 }
 
-// Get User by ID
-func (s *Service) GetUser(/*ctx context.Context, */id int64) (User, error) {
-	cacheKey := "user-detail-" + string(id)
+// Get Data by ID
+func (s *Service) Get(id int64) (User, error) {
+	cacheKey := SERVICEID + "-detail-" + string(id)
 	data,_ := redis.Get(cacheKey)
 	if (data != nil) {
 		var cachedResponse User;
 		json.Unmarshal(data, &cachedResponse)
 		return cachedResponse,nil
 	}
-	u, err := s.resource.GetUser(id)
+	u, err := s.resource.Get(id)
 	b,_ := json.Marshal(u)
 	redis.Set(cacheKey, b)
+	// return
 	return u, err
 }
 
-// Get List of All User
-func (s *Service) GetAllUser(/*ctx context.Context, */orderBy string, orderDirection string) ([]User, error) {
-	cacheKey := "user-list-" + orderBy + orderDirection
+// Get List of All Data
+func (s *Service) AllList(orderBy string, orderDirection string) ([]User, error) {
+	cacheKey := SERVICEID + "-list-" + orderBy + orderDirection
 	data,_ := redis.Get(cacheKey)
 	if (data != nil) {
 		var cachedResponse []User;
 		json.Unmarshal(data, &cachedResponse)
 		return cachedResponse,nil
 	}
-	u,err := s.resource.GetListUser(false, -1, -1, orderBy, orderDirection, "")
+	u,err := s.resource.GetList(false, -1, -1, orderBy, orderDirection, "")
 	b,_ := json.Marshal(u)
 	redis.Set(cacheKey, b)
+	// return
 	return u, err 
 }
 
-// Get User as Paginated List
-func (s *Service) GetPaginatedUser(/*ctx context.Context, */perPage int32, page int32, orderBy string, orderDirection string) ([]User, error) {
-	cacheKey := "user-list-" + orderBy + orderDirection + string(perPage) + string(page)
+// Get Data as Paginated List
+func (s *Service) PaginatedList(perPage int32, page int32, orderBy string, orderDirection string) ([]User, error) {
+	cacheKey := SERVICEID + "-list-" + orderBy + orderDirection + string(perPage) + string(page)
 	data,_ := redis.Get(cacheKey)
 	if (data != nil) {
 		var cachedResponse []User;
 		json.Unmarshal(data, &cachedResponse)
 		return cachedResponse,nil
 	}
-	u, err := s.resource.GetListUser(true, perPage, page, orderBy, orderDirection, "")
+	u, err := s.resource.GetList(true, perPage, page, orderBy, orderDirection, "")
 	b,_ := json.Marshal(u)
 	redis.Set(cacheKey, b)
+	// return
 	return u, err
 }
 
-// Update User
-func (s *Service) UpdateUser(/*ctx context.Context, */id int64, name string, email string, isActive bool, idempotencyKey string) (User) {
-	u := s.resource.UpdateUser(id, name, email, isActive, idempotencyKey)
-	// begin invalidate cache
-	redis.Delete("user-detail-" + string(id))
-	relatedKeys,_ := redis.GetKeys("user-list-*")
-	for _, key := range relatedKeys {
-		redis.Delete(key)
+// Update Data
+func (s *Service) Update(id int64, name string, email string, isActive bool, idempotencyKey string) (User) {
+	u := User{
+		ID: id,
+		Name: name, 
+		Email: email, 
+		IsActive: isActive, 
+		IdempotencyKey: idempotencyKey,
 	}
-	log.SetOutputToFile("log/user.log")
-	log.SetLevel(log.InfoLevel)
-	log.Infow("Cache Invalidation", "key", "user-detail-" + string(id))
-	log.Infow("Cache Invalidation", "key", "user-list-*")
- 	// end of cache invalidation
+	u = s.resource.Update(u)
+	// invalidate cache
+	helper.RevalidateCache(SERVICEID + "-detail-" + string(id), SERVICEID)
+	helper.RevalidateCachePattern(SERVICEID + "-list-*", SERVICEID)
+ 	// return
     return u
 }
 
-// Delete User
-func (s *Service) DeleteUser(/*ctx context.Context, */id int64) {
-	s.resource.DeleteUser(id)
-	// begin invalidate cache
-	redis.Delete("user-detail-" + string(id))
-	relatedKeys,_ := redis.GetKeys("user-list-*")
-	for _, key := range relatedKeys {
-		redis.Delete(key)
-	}
-	log.SetOutputToFile("log/user.log")
-	log.SetLevel(log.InfoLevel)
-	log.Infow("Cache Invalidation", "key", "user-detail-" + string(id))
-	log.Infow("Cache Invalidation", "key", "user-list-*")
- 	// end of cache invalidation
+// Delete Data
+func (s *Service) Delete(id int64) {
+	s.resource.Delete(id)
+	// invalidate cache
+	helper.RevalidateCache(SERVICEID + "-detail-" + string(id), SERVICEID)
+	helper.RevalidateCachePattern(SERVICEID + "-list-*", SERVICEID)
 }

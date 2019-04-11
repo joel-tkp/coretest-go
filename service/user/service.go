@@ -1,23 +1,23 @@
 package user
 
-// Contract Resource of user
+// Resource Contract
 type Resource interface {
-	CreateUser(string, string, bool, string) (User)
-	GetUser(int64) (User, error)
-	GetListUser(bool, int32, int32, string, string, string) ([]User, error)
-	UpdateUser(int64, string, string, bool, string) (User)
-	DeleteUser(int64)
+	Create(User) (User)
+	Get(int64) (User, error)
+	GetList(bool, int32, int32, string, string, string) ([]User, error)
+	Update(User) (User)
+	Delete(int64)
 }
 
-// Service of user
+// Service Definition
 type Service struct {
 	resource Resource
 }
 
-// New user service
-func New(userResource Resource) *Service {
+// Service Initialization
+func New(_resource Resource) *Service {
 	s := Service{
-		resource: userResource,
+		resource: _resource,
 	}
 	return &s
 }
