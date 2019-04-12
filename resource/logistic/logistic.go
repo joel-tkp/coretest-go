@@ -3,7 +3,7 @@ package logistic
 import (
 	// "context"
 
-	logisticservice "References/coretest/service/logistic"
+	logisticservice "coretest-go/service/logistic"
 	"github.com/jmoiron/sqlx"
 )
 

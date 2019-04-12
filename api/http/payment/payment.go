@@ -6,9 +6,9 @@ import (
 	"strconv" // String Converter
 	"time" // time lib
 
-	"References/coretest/api"
-	"References/coretest/api/http/base"
-	"References/coretest/service/payment"
+	"coretest-go/api"
+	"coretest-go/api/http/base"
+	"coretest-go/service/payment"
 )
 
 var paymentService api.PaymentService

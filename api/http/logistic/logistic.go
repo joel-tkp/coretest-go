@@ -3,7 +3,7 @@ package logistic
 import (
 	"net/http"
 
-	"References/coretest/api"
+	"coretest-go/api"
 )
 
 var logisticService api.LogisticService

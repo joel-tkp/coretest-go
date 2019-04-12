@@ -1,7 +1,7 @@
 package log
 
 import (
-	"References/coretest/pkg/log/logger"
+	"coretest-go/pkg/log/logger"
 	"go.uber.org/zap"
 )
 

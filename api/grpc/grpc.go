@@ -3,7 +3,7 @@ package grpc
 import (
 	"net"
 
-	"References/coretest/api"
+	"coretest-go/api"
 	"google.golang.org/grpc"
 )
 

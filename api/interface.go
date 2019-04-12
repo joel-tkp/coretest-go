@@ -3,10 +3,10 @@ package api
 import (
 	//"context"
 
-	"References/coretest/service/user"
-	"References/coretest/service/order"
-	"References/coretest/service/payment"
-	"References/coretest/service/logistic"
+	"coretest-go/service/user"
+	"coretest-go/service/order"
+	"coretest-go/service/payment"
+	"coretest-go/service/logistic"
 )
 
 type UserService interface {

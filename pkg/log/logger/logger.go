@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"References/coretest/pkg/errors"
+	"coretest-go/pkg/errors"
 	"go.uber.org/zap"
 )
 

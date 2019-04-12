@@ -5,18 +5,18 @@ import (
 	"net"
 
 	_ "github.com/lib/pq" // backend-db driver
-	httpapi "References/coretest/api/http" // HTTP handler
-	orderresource "References/coretest/resource/order" // resource entity
-	paymentresource "References/coretest/resource/payment" // resource entity
-	logisticresource "References/coretest/resource/logistic" // resource entity
-	userresource "References/coretest/resource/user" // resource entity
-	orderservice "References/coretest/service/order" // service provider
-	paymentservice "References/coretest/service/payment" // service provider
-	logisticservice "References/coretest/service/logistic" // service provider
-	userservice "References/coretest/service/user" // service provider
+	httpapi "coretest-go/api/http" // HTTP handler
+	orderresource "coretest-go/resource/order" // resource entity
+	paymentresource "coretest-go/resource/payment" // resource entity
+	logisticresource "coretest-go/resource/logistic" // resource entity
+	userresource "coretest-go/resource/user" // resource entity
+	orderservice "coretest-go/service/order" // service provider
+	paymentservice "coretest-go/service/payment" // service provider
+	logisticservice "coretest-go/service/logistic" // service provider
+	userservice "coretest-go/service/user" // service provider
 	"github.com/jmoiron/sqlx" // backend-db wrapper extension
 	"gopkg.in/yaml.v2" // config-read
-	redis "References/coretest/service/redis"
+	redis "coretest-go/service/redis"
 )
 
 var schema = `

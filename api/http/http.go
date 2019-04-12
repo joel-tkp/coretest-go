@@ -5,11 +5,11 @@ import (
 	"net"
 	"net/http"
 
-	"References/coretest/api"
-	"References/coretest/api/http/order"
-	"References/coretest/api/http/payment"
-	"References/coretest/api/http/logistic"
-	"References/coretest/api/http/user"
+	"coretest-go/api"
+	"coretest-go/api/http/order"
+	"coretest-go/api/http/payment"
+	"coretest-go/api/http/logistic"
+	"coretest-go/api/http/user"
     "github.com/julienschmidt/httprouter"
 )
 

@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"References/coretest/service/redis" // Redis Service Provider
-	"References/coretest/pkg/log" // Logger Package
+	"coretest-go/service/redis" // Redis Service Provider
+	"coretest-go/pkg/log" // Logger Package
 )
 
 // Helper

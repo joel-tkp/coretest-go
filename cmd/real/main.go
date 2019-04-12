@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"References/coretest/server"
+	"coretest-go/server"
 )
 
 // main function to keep all controls
