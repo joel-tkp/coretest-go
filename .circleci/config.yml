@@ -44,11 +44,11 @@ jobs:
           command: |
             go get -u github.com/mgechev/revive
       # Get vendor needed
-      - run:
-          name: vendor dependencies
-          command: |
-            dep ensure -v -vendor-only
-          env: ['test']
+      #- run:
+      #    name: vendor dependencies
+      #    command: |
+      #      dep ensure -v -vendor-only
+      #    env: ['test']
       # Check code format and construction
       - run:
           name: go vet
