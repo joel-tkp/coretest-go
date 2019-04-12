@@ -3,3 +3,12 @@
 // bin
 /coretest
 /log
+
+# DSStore, VSCode and GoLand ignore
+.DS_Store
+.vscode
+.envrc
+.idea
+
+# Test Result
+results.json
