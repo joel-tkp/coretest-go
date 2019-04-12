@@ -1,0 +1,81 @@
+# Golang CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version
+      - image: "circleci/golang:1.10"
+      - image: redis
+      - image: "grokzen/redis-cluster:5.0.2"
+      - image: "postgres:9.6.2-alpine"
+        environment:
+          LC_ALL: C.UTF-8
+          POSTGRES_USER: coretest
+          POSTGRES_PASSWORD: coretest
+    environment:
+      - GIT_TEST_REPO: "/go/src/github.com/joel-tkp/coretest-go"
+      - GIT_TEST_ENV: "test"
+      - POSTGRES_DSN: "postgres://coretest:coretest@localhost:5432?sslmode=disable"
+      - MYSQL_DSN: ""
+      - REDIS_ADDRESS: ""
+
+    #### TEMPLATE_NOTE: go expects specific checkout path representing url
+    working_directory: /go/src/github.com/joel-tkp/coretest-go
+    # specify any bash command here prefixed with `run: `
+    steps:
+      - checkout
+      # Print environment variable
+      - run:
+          name: Print Environment Variables
+          command: |
+            make test.env
+      # Dockerize is available so no need to install it again
+      # Waiting for database
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      # Waiting for redis
+      - run:
+          name: Wait for redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      # Ensuring Go dependencies with dep
+      - run:
+          name: install dep and dep ensure
+          command: |
+            go get -u github.com/golang/dep/cmd/dep
+      # Install revive for golint
+      - run:
+          name: install revive
+          command: |
+            go get -u github.com/mgechev/revive
+      # Get vendor needed
+      - run:
+          name: vendor dependencies
+          command: |
+            dep ensure -v -vendor-only
+          env: ['test']
+      # Check code format and construction
+      - run:
+          name: go vet
+          command: |
+            bash ./tools/scripts/govet.sh
+      # Run unit test
+      - run:
+          name: go test
+          command: |
+            go test -v -race ./...
+      # Run unit test coverage
+      - run:
+          name: test coverage
+          command: |
+            bash ./tools/scripts/gocoverall.sh 30
+      # Build
+      - run:
+          name: go build coretest
+          command: |
+            go build -v -o coretest cmd/real/main.go
+      # Remove binary
+      - run:
+          name: removing binary
+          command: |
+            rm coretest
