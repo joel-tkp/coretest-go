@@ -2,13 +2,13 @@
 coretest
 
 # Log
-/log
+/log/*
 
 # DSStore, VSCode and GoLand ignore
 .DS_Store
 .vscode
 .envrc
-/.idea
+.idea/
 
 # Test Result
 results.json
