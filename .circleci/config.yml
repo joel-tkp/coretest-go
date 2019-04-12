@@ -24,11 +24,6 @@ jobs:
     # specify any bash command here prefixed with `run: `
     steps:
       - checkout
-      # Print environment variable
-      - run:
-          name: Print Environment Variables
-          command: |
-            make test.env
       # Dockerize is available so no need to install it again
       # Waiting for database
       - run:
