@@ -1,14 +1,20 @@
-.vscode
+# Binary
+coretest
 
-// bin
-/coretest
-/log
+# Log
+/log/*
 
 # DSStore, VSCode and GoLand ignore
 .DS_Store
 .vscode
 .envrc
-.idea/*
+.idea/
 
 # Test Result
 results.json
+
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
