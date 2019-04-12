@@ -15,7 +15,7 @@ var (
 	_followerDB string = "user=application password=mabufare dbname=testfollower sslmode=disable"
 	masterDB *sqlx.DB
 	followerDB *sqlx.DB
-	retrievedInsertedID [...]int64
+	retrievedInsertedID [2]int64
 )
 
 // init
