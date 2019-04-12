@@ -2,13 +2,13 @@ package user
 
 import (
 	"fmt"
-	"References/coretest/resource/helper"
-	"References/coretest/service/user"
+	"coretest-go/resource/helper"
+	"coretest-go/service/user"
 	"github.com/jmoiron/sqlx"
 	// "github.com/satori/go.uuid" // for uid primary key
 )
 
-// Backend Data Resource 
+// Backend Data Resource
 type Resource struct {
 	masterDB   *sqlx.DB
 	followerDB *sqlx.DB
@@ -45,9 +45,20 @@ func (r *Resource) Create(u user.User) (user.User) {
 	queryBuilder += helper.GenerateInsertFields(FIELDS, "", PRIMARYKEY)
 	queryBuilder += ") VALUES ("
 	queryBuilder += helper.GenerateInsertFields(FIELDS, ":", PRIMARYKEY)
-	queryBuilder += ")"
-    tx.NamedExec(queryBuilder, &u)
+	queryBuilder += ") RETURNING id"
+    rows, err := tx.NamedQuery(queryBuilder, &u)
     tx.Commit()
+    // retrieved ID
+    if err != nil {
+    	u.ID = 0
+    	return u // return
+	}
+    var returnedId int64
+	if rows.Next() {
+		rows.Scan(&returnedId)
+		u.ID = returnedId
+	}
+	// return
     return u
 }
 
