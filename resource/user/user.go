@@ -2,8 +2,8 @@ package user
 
 import (
 	"fmt"
-	"coretest-go/resource/helper"
-	"coretest-go/service/user"
+	"github.com/joel-tkp/coretest-go/resource/helper"
+	"github.com/joel-tkp/coretest-go/service/user"
 	"github.com/jmoiron/sqlx"
 	// "github.com/satori/go.uuid" // for uid primary key
 )

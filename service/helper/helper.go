@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"coretest-go/service/redis" // Redis Service Provider
-	"coretest-go/pkg/log" // Logger Package
+	"github.com/joel-tkp/coretest-go/service/redis" // Redis Service Provider
+	"github.com/joel-tkp/coretest-go/pkg/log" // Logger Package
 )
 
 // Helper

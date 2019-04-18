@@ -3,7 +3,7 @@ package order
 import (
 	// "context"
 
-	orderservice "coretest-go/service/order"
+	orderservice "github.com/joel-tkp/coretest-go/service/order"
 	"github.com/jmoiron/sqlx"
 )
 

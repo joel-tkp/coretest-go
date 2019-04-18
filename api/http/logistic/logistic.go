@@ -3,7 +3,7 @@ package logistic
 import (
 	"net/http"
 
-	"coretest-go/api"
+	"github.com/joel-tkp/coretest-go/api"
 )
 
 var logisticService api.LogisticService

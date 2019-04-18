@@ -1,7 +1,7 @@
 package log
 
 import (
-	"coretest-go/pkg/log/logger"
+	"github.com/joel-tkp/coretest-go/pkg/log/logger"
 	"go.uber.org/zap"
 )
 

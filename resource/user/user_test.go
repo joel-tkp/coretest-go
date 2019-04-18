@@ -1,7 +1,7 @@
 package user
 
 import (
-	"coretest-go/service/user"
+	"github.com/joel-tkp/coretest-go/service/user"
 	"reflect"
 	"testing"
 

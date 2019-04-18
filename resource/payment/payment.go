@@ -2,8 +2,8 @@ package payment
 
 import (
 	"fmt"
-	"coretest-go/resource/helper"
-	"coretest-go/service/payment"
+	"github.com/joel-tkp/coretest-go/resource/helper"
+	"github.com/joel-tkp/coretest-go/service/payment"
 	"github.com/jmoiron/sqlx"
 	// "github.com/satori/go.uuid" // for uid primary key
 )

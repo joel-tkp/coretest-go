@@ -3,10 +3,10 @@ package api
 import (
 	//"context"
 
-	"coretest-go/service/user"
-	"coretest-go/service/order"
-	"coretest-go/service/payment"
-	"coretest-go/service/logistic"
+	"github.com/joel-tkp/coretest-go/service/user"
+	"github.com/joel-tkp/coretest-go/service/order"
+	"github.com/joel-tkp/coretest-go/service/payment"
+	"github.com/joel-tkp/coretest-go/service/logistic"
 )
 
 type UserService interface {

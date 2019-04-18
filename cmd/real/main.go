@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"coretest-go/server"
+	"github.com/joel-tkp/coretest-go/server"
 )
 
 // main function to keep all controls

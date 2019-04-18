@@ -5,18 +5,18 @@ import (
 	"net"
 
 	_ "github.com/lib/pq" // backend-db driver
-	httpapi "coretest-go/api/http" // HTTP handler
-	orderresource "coretest-go/resource/order" // resource entity
-	paymentresource "coretest-go/resource/payment" // resource entity
-	logisticresource "coretest-go/resource/logistic" // resource entity
-	userresource "coretest-go/resource/user" // resource entity
-	orderservice "coretest-go/service/order" // service provider
-	paymentservice "coretest-go/service/payment" // service provider
-	logisticservice "coretest-go/service/logistic" // service provider
-	userservice "coretest-go/service/user" // service provider
+	httpapi "github.com/joel-tkp/coretest-go/api/http" // HTTP handler
+	orderresource "github.com/joel-tkp/coretest-go/resource/order" // resource entity
+	paymentresource "github.com/joel-tkp/coretest-go/resource/payment" // resource entity
+	logisticresource "github.com/joel-tkp/coretest-go/resource/logistic" // resource entity
+	userresource "github.com/joel-tkp/coretest-go/resource/user" // resource entity
+	orderservice "github.com/joel-tkp/coretest-go/service/order" // service provider
+	paymentservice "github.com/joel-tkp/coretest-go/service/payment" // service provider
+	logisticservice "github.com/joel-tkp/coretest-go/service/logistic" // service provider
+	userservice "github.com/joel-tkp/coretest-go/service/user" // service provider
 	"github.com/jmoiron/sqlx" // backend-db wrapper extension
 	"gopkg.in/yaml.v2" // config-read
-	redis "coretest-go/service/redis"
+	redis "github.com/joel-tkp/coretest-go/service/redis"
 )
 
 var schema = `

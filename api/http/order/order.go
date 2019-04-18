@@ -3,7 +3,7 @@ package order
 import (
 	"net/http"
 
-	"coretest-go/api"
+	"github.com/joel-tkp/coretest-go/api"
 )
 
 var orderService api.OrderService

@@ -6,9 +6,9 @@ import (
 	"strconv" // String Converter
 	"time" // time lib
 
-	"coretest-go/api"
-	"coretest-go/api/http/base"
-	"coretest-go/service/user"
+	"github.com/joel-tkp/coretest-go/api"
+	"github.com/joel-tkp/coretest-go/api/http/base"
+	"github.com/joel-tkp/coretest-go/service/user"
 )
 
 var userService api.UserService

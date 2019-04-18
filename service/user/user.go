@@ -3,9 +3,9 @@ package user
 import (
 	// "context"
 	"encoding/json" // JSON encode
-	"coretest-go/service/helper" // Helper Function
-	"coretest-go/service/redis" // Redis Service Provider
-	// "coretest-go/pkg/log" // Logger Package
+	"github.com/joel-tkp/coretest-go/service/helper" // Helper Function
+	"github.com/joel-tkp/coretest-go/service/redis" // Redis Service Provider
+	// "github.com/joel-tkp/coretest-go/pkg/log" // Logger Package
 )
 
 // Model Definition
